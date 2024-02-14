@@ -14,11 +14,14 @@ def run(input_fn, output_fn, position_fn='', angular_res=''):
     if position_fn:
         srcVis = SphericalSourceVisualizer(position_fn, duration, ambiVis.visualization_rate(), angular_res=angular_res)
 
+    # writer = VideoWriter(output_fn,
+    #                    video_fps=ambiVis.visualization_rate(),
+    #                    width=ambiVis.frame_dims[1],
+    #                    height=ambiVis.frame_dims[0],
+    #                    rgb=True)
+        
     writer = VideoWriter(output_fn,
-                         video_fps=ambiVis.visualization_rate(),
-                         width=ambiVis.frame_dims[1],
-                         height=ambiVis.frame_dims[0],
-                         rgb=True)
+                         video_fps=ambiVis.visualization_rate(), overwrite=False)
 
     cmap = np.stack(plt.get_cmap('inferno').colors)
     while True:

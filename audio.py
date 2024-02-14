@@ -1,7 +1,7 @@
 import os
 import scipy.signal
 import numpy as np
-from pyutils.iolib.video import getFFprobeMeta
+from video import getFFprobeMeta
 from cmd import runSystemCMD
 from scikits.audiolab import Sndfile, Format
 import librosa
