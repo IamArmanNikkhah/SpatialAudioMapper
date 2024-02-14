@@ -3,7 +3,6 @@ from common import AmbiFormat
 from decoder import AmbiDecoder
 from iolib_position import read_position_file
 from position import Position, MovingSource
-from itertools import izip
 
 
 def spherical_mesh(angular_res):
@@ -137,7 +136,7 @@ def ambix_emd(ambi1, ambi2, rate, ang_res=20):
     ambi1Vis = SphericalAmbisonicsVisualizer(ambi1, rate, window=0.1, angular_res=ang_res)
     ambi2Vis = SphericalAmbisonicsVisualizer(ambi2, rate, window=0.1, angular_res=ang_res)
     directional_error, power_error = [], []
-    for rms1, rms2 in izip(ambi1Vis.loop_frames(), ambi2Vis.loop_frames()):
+    for rms1, rms2 in zip(ambi1Vis.loop_frames(), ambi2Vis.loop_frames()):
         derr, perr = emd(rms1, rms2, ambi1Vis.phi_mesh, ambi1Vis.nu_mesh)
         directional_error.append(derr), power_error.append(perr)
     return np.mean(directional_error), np.mean(power_error)
@@ -160,7 +159,7 @@ def test_emd():
                                        rate=ambiVis.visualization_rate(),
                                        angular_res=ang_res)
 
-    for rms, frame in izip(ambiVis.loop_frames(), srcVis.loop_frames()):
+    for rms, frame in zip(ambiVis.loop_frames(), srcVis.loop_frames()):
         print(emd(rms, frame, ambiVis.phi_mesh, ambiVis.nu_mesh))
         # plt.imshow(frame + rms/rms.max())
         # plt.show()
