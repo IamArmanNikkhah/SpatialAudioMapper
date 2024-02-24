@@ -52,7 +52,7 @@ class Position(object):
         elif c_type == 'polar':
             return np.array([self.phi, self.nu, self.r])
         else:
-            raise(ValueError, 'Unknown coordinate type. Use cartesian or polar.')
+            raise ValueError('Unknown coordinate type. Use cartesian or polar.')
 
     def print_position(self, c_type=None):
         if c_type is None or c_type == 'cartesian':
