@@ -3,7 +3,6 @@ import scipy.signal
 import numpy as np
 from video import getFFprobeMeta
 from cmd import runSystemCMD
-#from scikits.audiolab import Sndfile, Format
 import librosa
 
 import tempfile
