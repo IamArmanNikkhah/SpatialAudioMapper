@@ -8,7 +8,9 @@ from matplotlib import pyplot as plt
 
 
 def run(input_fn, output_fn, position_fn='', angular_res='', csv_output='frame_data.csv'):
+    
     data, rate = load_wav(input_fn)
+    print(f' The sample rate of the WAV file is {rate}. You should set (rs*window) + 1 for Mel spectogram')
     duration = data.shape[0] / float(rate)
 
     ambiVis = SphericalAmbisonicsVisualizer(data, rate, angular_res=angular_res)
